@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Victor\'s Android Labs</string>
+    <string name="app_name">维克多的安卓实验室</string>
     <string name="hello_message">你好，世界！</string>
+    <string name="editmessage">我是一个可编辑文本</string>
+    <string name="hinttext">写点什么</string>
     <string name="button_message">我是一个按钮</string>
+    <string name="checkbox">你喝咖啡吗？</string>
+    <string name="radio">你喝茶吗？</string>
+    <string name="switcher">你喝牛奶吗？</string>
 </resources>
