@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"algonquin.cst2335.victorsandroidlabs","l":"ExampleInstrumentedTest"},{"p":"algonquin.cst2335.victorsandroidlabs","l":"ExampleUnitTest"},{"p":"algonquin.cst2335.victorsandroidlabs","l":"MainActivity"}];updateSearchResults();
