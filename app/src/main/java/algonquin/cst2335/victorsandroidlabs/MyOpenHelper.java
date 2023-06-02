@@ -10,10 +10,10 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
     public static final String name = "TheDatabase";
     public static final int version = 1;
-    private static final String TABLE_NAME = "Messages";
-    private static final String col_message = "Message";
-    private static final String col_send_receive = "SendOrReceive";
-    private static final String col_time_sent = "TimeSent";
+    public static final String TABLE_NAME = "Messages";
+    public static final String col_message = "Message";
+    public static final String col_send_receive = "SendOrReceive";
+    public static final String col_time_sent = "TimeSent";
 
     public MyOpenHelper(Context context) {
         super(context, name, null, version);
