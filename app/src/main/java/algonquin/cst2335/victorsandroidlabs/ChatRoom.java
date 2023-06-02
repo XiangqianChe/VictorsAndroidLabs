@@ -36,6 +36,8 @@ public class ChatRoom extends AppCompatActivity {
     RecyclerView chatList;
     ArrayList<ChatMessage> messages = new ArrayList<>();
     MyChatAdapter adt;
+    MyOpenHelper opener;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,8 @@ public class ChatRoom extends AppCompatActivity {
         Button receiveBtn = findViewById(R.id.receive_button);
         EditText editMessage = findViewById(R.id.edit_message);
 
-        MyOpenHelper opener = new MyOpenHelper( this );
-        SQLiteDatabase db = opener.getWritableDatabase();
+        opener = new MyOpenHelper( this );
+        db = opener.getWritableDatabase();
 
         Cursor results = db.rawQuery("SELECT * FROM " + MyOpenHelper.TABLE_NAME + ";", null);
         int _idCol = results.getColumnIndex("_id");
@@ -126,10 +128,16 @@ public class ChatRoom extends AppCompatActivity {
                             ChatMessage removedMessage = messages.get(position);
                             messages.remove(position);
                             adt.notifyItemRemoved(position);
+                            db.delete(MyOpenHelper.TABLE_NAME, "_id=?", new String[] {String.valueOf(removedMessage.getId())});
+
                             Snackbar.make(messageText, "You deleted message #" + position, Snackbar.LENGTH_SHORT)
                                     .setAction("Undo", clkU -> {
                                         messages.add(position, removedMessage);
                                         adt.notifyItemInserted(position);
+                                        db.execSQL("INSERT INTO " + MyOpenHelper.TABLE_NAME + " values('" + removedMessage.getId() +
+                                                "','" + removedMessage.getMessage() +
+                                                "','" + removedMessage.getSendOrReceive() +
+                                                "','" + removedMessage.getTimeSent() + "');");
                                     })
                                     .show();
                         })
