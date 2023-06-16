@@ -32,9 +32,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocketFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
                     if (file.exists()) {
                         image = BitmapFactory.decodeFile(getFilesDir() + "/" + iconName + ".png");
                     } else  {
-                        URL imgUrl = new URL( "https://openweathermap.org/img/w/" + iconName + ".png" );
-                        HttpURLConnection connection = (HttpURLConnection) imgUrl.openConnection();
+                        URL imgUrl = new URL( "http://openweathermap.org/img/w/" + iconName + ".png" ); // use HTTP instead of HTTPS
+                        HttpURLConnection connection = (HttpURLConnection) imgUrl.openConnection(); // HTTP S Connection to HTTPConnection
                         connection.connect();
                         int responseCode = connection.getResponseCode();
                         if (responseCode == 200) {
@@ -108,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                         tv.setText("The humidity is " + humidity);
                         tv.setVisibility(View.VISIBLE);
                         tv = findViewById(R.id.description);
-                        tv.setText("The description is " + description);
+                        tv.setText(description);
                         tv.setVisibility(View.VISIBLE);
                         ImageView iv = findViewById(R.id.icon);
                         iv.setImageBitmap(image);
@@ -117,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (IOException | JSONException ioe) {
                     Log.e("Connection error:", ioe.getMessage());
+                    Log.e("Connection error:", String.valueOf(ioe.getCause()));
                 }
             });
         });
