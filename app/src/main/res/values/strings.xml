@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Victor\'s Android Labs</string>
-    <string name="password_prompt">Type your Password:</string>
-    <string name="login_prompt">Login</string>
+    <string name="city_prompt">Type in the name of a city:</string>
+    <string name="city_hint">Type city name here</string>
+    <string name="search_prompt">GET FORECAST</string>
 </resources>
