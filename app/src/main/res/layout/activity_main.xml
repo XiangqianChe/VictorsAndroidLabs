@@ -1,69 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/city_tv"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/city_prompt" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/city_et"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/city_hint" />
-
-    <Button
-        android:id="@+id/forecast_btn"
+        android:layout_height="match_parent">
+        <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/search_prompt" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/temp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:text="Temp goes here" />
+        <TextView
+            android:id="@+id/city_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/city_prompt" />
 
-    <TextView
-        android:id="@+id/maxTemp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:text="Max goes here" />
+        <EditText
+            android:id="@+id/city_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/city_hint" />
 
-    <TextView
-        android:id="@+id/minTemp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:text="Min goes here" />
+        <Button
+            android:id="@+id/forecast_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search_prompt" />
 
-    <TextView
-        android:id="@+id/humidity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:text="Humidity goes here" />
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="Temp goes here" />
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="300dp"
-        android:visibility="invisible"
-        android:layout_height="300dp" />
+        <TextView
+            android:id="@+id/maxTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="Max goes here" />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:text="Description goes here" />
+        <TextView
+            android:id="@+id/minTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="Min goes here" />
 
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="Humidity goes here" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="300dp"
+            android:visibility="invisible"
+            android:layout_height="300dp" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="Description goes here" />
+
+    </LinearLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/popout_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/popout_header"
+            app:menu="@menu/main_activity_actions"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>
